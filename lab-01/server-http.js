@@ -1,8 +1,8 @@
 // Import the built-in HTTP module provided by Node.js
 const http = require("http");
 
-// Port on which the server will listen
-const PORT = 3000;
+// Port on which the server will listen (uses environment variable or fallback to 3000 locally)
+const PORT = process.env.PORT || 3000;
 
 // Create an HTTP server instance using Node's built-in http module
 const server = http.createServer((request, response) => {

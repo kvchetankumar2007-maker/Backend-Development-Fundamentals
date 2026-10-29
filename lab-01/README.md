@@ -7,14 +7,20 @@
 - **Course:** Backend Development Fundamentals
 - **Lab Number:** 01
 - **Lab Title:** Node.js and Express server
-- **Section:** [Enter your section]
+- **Section:** [CSE GEN AI 2A]
 
 ---
 
 ## Live Deployment Status
 
-- **Status:** Not Deployed (Executed and verified in local environment)
-- **Deployment Limitation:** Cloud deployment requires connecting to an external cloud platform account (e.g., Vercel or Render). Step-by-step instructions for deploying to cloud platforms are provided in the [Deployment Guide](#deployment-guide) section below.
+- **Status:** 🟢 Live and Deployed on Render
+- **Deployment URL:** [https://backend-development-fundamentals-5m4w.onrender.com/](https://backend-development-fundamentals-5m4w.onrender.com/)
+
+### Live Endpoints
+- **Home Route (`GET /`):** [https://backend-development-fundamentals-5m4w.onrender.com/](https://backend-development-fundamentals-5m4w.onrender.com/)
+- **About Route (`GET /about`):** [https://backend-development-fundamentals-5m4w.onrender.com/about](https://backend-development-fundamentals-5m4w.onrender.com/about)
+- **Time Route (`GET /time`):** [https://backend-development-fundamentals-5m4w.onrender.com/time](https://backend-development-fundamentals-5m4w.onrender.com/time)
+- **Catch-all 404 Route (`GET /unknown`):** [https://backend-development-fundamentals-5m4w.onrender.com/unknown](https://backend-development-fundamentals-5m4w.onrender.com/unknown)
 
 ---
 

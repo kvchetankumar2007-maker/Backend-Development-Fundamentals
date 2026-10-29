@@ -4,8 +4,8 @@ const express = require("express");
 // Initialize the Express application
 const app = express();
 
-// Define the port number
-const PORT = 3000;
+// Define the port number (using Render/cloud environment variable or fallback to 3000 locally)
+const PORT = process.env.PORT || 3000;
 
 // 1. GET / - Home Route
 // Returns a clear welcome message with HTTP 200 OK
