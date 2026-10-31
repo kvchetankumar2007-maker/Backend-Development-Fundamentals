@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
 lab-01/node_modules/
+lab-02/node_modules/
 
 # Environment variables
 .env
@@ -14,4 +15,3 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-

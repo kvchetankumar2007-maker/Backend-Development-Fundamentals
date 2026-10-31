@@ -20,3 +20,12 @@ Repository containing backend lab implementations for the **Backend Development 
 - **404 Route (`GET /unknown`):** [https://backend-development-fundamentals-5m4w.onrender.com/unknown](https://backend-development-fundamentals-5m4w.onrender.com/unknown)
 
 For complete documentation, screenshots, and setup instructions, see [lab-01/README.md](lab-01/README.md).
+
+---
+
+## Lab 2: SQLite Database and CRUD Operations
+
+Express.js REST API integrated with an SQLite database providing CRUD routes (`GET`, `POST`, `PUT`, `DELETE`) with SQL parameterization and input validation.
+
+For complete documentation, endpoints, screenshots, and setup instructions, see [lab-02/README.md](lab-02/README.md).
+
