@@ -6,11 +6,15 @@
 - **Course:** Backend Development Fundamentals
 - **Lab Number:** 02
 
-## Live Link
+## Live Deployment (Render)
 
-**Deployment URL:** YOUR_LIVE_URL_HERE
+- **Status:** 🟢 Live and Deployed on Render
+- **Deployment URL:** [https://backend-development-fundamentals-2-byeq.onrender.com/](https://backend-development-fundamentals-2-byeq.onrender.com/)
 
-*(If the project cannot be deployed, replace this line with the reason and rely on the Postman screenshots below.)*
+### Live Endpoints
+- **Root API Status (`GET /`):** [https://backend-development-fundamentals-2-byeq.onrender.com/](https://backend-development-fundamentals-2-byeq.onrender.com/)
+- **Get All Books (`GET /books/`):** [https://backend-development-fundamentals-2-byeq.onrender.com/books/](https://backend-development-fundamentals-2-byeq.onrender.com/books/)
+- **Get One Book (`GET /books/1/`):** [https://backend-development-fundamentals-2-byeq.onrender.com/books/1/](https://backend-development-fundamentals-2-byeq.onrender.com/books/1/)
 
 ## Objective
 

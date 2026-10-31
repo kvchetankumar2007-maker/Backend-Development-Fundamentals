@@ -25,7 +25,12 @@ For complete documentation, screenshots, and setup instructions, see [lab-01/REA
 
 ## Lab 2: SQLite Database and CRUD Operations
 
-Express.js REST API integrated with an SQLite database providing CRUD routes (`GET`, `POST`, `PUT`, `DELETE`) with SQL parameterization and input validation.
+### 🟢 Live Deployment (Render)
+- **Base URL:** [https://backend-development-fundamentals-2-byeq.onrender.com/](https://backend-development-fundamentals-2-byeq.onrender.com/)
+
+#### Live Endpoints:
+- **API Status (`GET /`):** [https://backend-development-fundamentals-2-byeq.onrender.com/](https://backend-development-fundamentals-2-byeq.onrender.com/)
+- **Get All Books (`GET /books/`):** [https://backend-development-fundamentals-2-byeq.onrender.com/books/](https://backend-development-fundamentals-2-byeq.onrender.com/books/)
+- **Get Book by ID (`GET /books/1/`):** [https://backend-development-fundamentals-2-byeq.onrender.com/books/1/](https://backend-development-fundamentals-2-byeq.onrender.com/books/1/)
 
 For complete documentation, endpoints, screenshots, and setup instructions, see [lab-02/README.md](lab-02/README.md).
-
