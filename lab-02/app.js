@@ -49,6 +49,22 @@ const validateBook = (body) => {
 
 // ---------- Routes ----------
 
+// 0. GET / -> API info and health check
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Backend Development Fundamentals - Lab 2 (SQLite & Express CRUD API)',
+    author: 'K V Chetan Kumar',
+    status: 'online',
+    endpoints: {
+      getAllBooks: 'GET /books/',
+      getBookById: 'GET /books/:bookId/',
+      addBook: 'POST /books/',
+      updateBook: 'PUT /books/:bookId/',
+      deleteBook: 'DELETE /books/:bookId/'
+    }
+  });
+});
+
 // 1. GET /books/ -> all books
 app.get('/books/', async (req, res) => {
   try {

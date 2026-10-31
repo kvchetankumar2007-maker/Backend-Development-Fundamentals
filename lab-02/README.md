@@ -50,6 +50,15 @@ The server runs at `http://localhost:3000/`.
 
 **Environment variables:** none are required. `PORT` is optional (default `3000`); see `.env.example`. Never commit a real `.env` file.
 
+### Deployment on Render
+
+1. In the [Render Dashboard](https://dashboard.render.com), create a new **Web Service** or select your existing one.
+2. Under **Settings**:
+   - **Root Directory:** `lab-02`
+   - **Build Command:** `npm install && npm rebuild sqlite3 --build-from-source`
+   - **Start Command:** `node app.js` (or `npm start`)
+   *(Note: The `--build-from-source` step is also automatically triggered on Linux via `postinstall` to resolve GLIBC compatibility).*
+
 ### Create the database again (optional)
 
 `books.db` is already included. To rebuild it from scratch with the SQLite CLI:
