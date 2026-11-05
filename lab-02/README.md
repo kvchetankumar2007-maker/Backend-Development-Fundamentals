@@ -180,3 +180,22 @@ POST creates a new resource (the server picks the id). PUT replaces or updates a
 4. **Port Binding for Production vs. Local Development:**
    - *Problem:* Hardcoding `app.listen(3000)` would cause deployment to fail on Render because cloud platforms assign a random dynamic port through environment variables.
    - *Solution:* Implemented dynamic port assignment: `const PORT = process.env.PORT || 3000;`, enabling automatic port binding in cloud environments while defaulting to `3000` during local development.
+
+---
+
+## Submission Checklist
+
+- [x] Express.js server initialized and configured with SQLite (`sqlite` & `sqlite3`).
+- [x] CRUD endpoints implemented:
+  - `GET /` (Root API information and health check)
+  - `GET /books/` (Read all books)
+  - `GET /books/:bookId/` (Read single book by ID)
+  - `POST /books/` (Create new book with input validation)
+  - `PUT /books/:bookId/` (Update existing book)
+  - `DELETE /books/:bookId/` (Remove book)
+- [x] Parameterized SQL queries using `?` placeholders to prevent SQL injection.
+- [x] Robust input validation and error handling (400 Bad Request, 404 Not Found, 500 Server Error).
+- [x] Render deployment configured with automated Linux rebuild (`postinstall.js`) for GLIBC compatibility.
+- [x] Live deployment verified on Render: [https://backend-development-fundamentals-2-byeq.onrender.com/](https://backend-development-fundamentals-2-byeq.onrender.com/)
+- [x] Verified Postman & database screenshots organized in `screenshots/`.
+- [x] Isolated under `lab-02/` directory in GitHub repository with `lab-01` preserved.
