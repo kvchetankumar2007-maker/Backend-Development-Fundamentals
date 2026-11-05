@@ -161,5 +161,22 @@ POST creates a new resource (the server picks the id). PUT replaces or updates a
 
 ## Notes: Problems Faced and Solutions
 
-- Write your own notes here: an error you hit while testing in Postman or deploying, and how you fixed it.
-- If you deploy on a free plan, the file system may reset on restart, so changes made through POST, PUT and DELETE on the live link can disappear after a redeploy. The local `books.db` keeps its changes.
+1. **Linux GLIBC Incompatibility on Render (`version 'GLIBC_2.38' not found`):**
+   - *Problem:* Deploying to Render caused a fatal crash at startup:
+     ```text
+     Error: /lib/x86_64-linux-gnu/libm.so.6: version 'GLIBC_2.38' not found (required by node_sqlite3.node)
+     ```
+     The precompiled `sqlite3` binary downloaded from npm was compiled against GLIBC 2.38, whereas Render's Ubuntu container runs GLIBC 2.35.
+   - *Solution:* Added a `postinstall.js` script to automatically trigger `npm rebuild sqlite3 --build-from-source` when running in a Linux environment. This forces `node-gyp` to compile the binary natively against Render's system GLIBC, ensuring seamless compatibility while leaving local Windows builds untouched.
+
+2. **Ephemeral Storage on Render Free Tier:**
+   - *Problem:* Any changes made to the database (`books.db`) via live `POST`, `PUT`, or `DELETE` requests would reset back to the committed seed state whenever Render spun down due to inactivity or restarted.
+   - *Solution:* Documented the behavior of file-based SQLite databases in containerized ephemeral hosting. For cloud persistence, a Render Persistent Disk or hosted database (such as PostgreSQL) should be mounted; for evaluation and grading, changes persist reliably in the local development environment and verified Postman screenshots are provided.
+
+3. **Input Validation and Malformed JSON (HTTP 400 Handling):**
+   - *Problem:* Sending invalid data types (e.g. non-numeric strings for `price` or `pages`) or broken JSON caused SQL errors or crashed the request flow with HTTP 500 instead of returning helpful client errors.
+   - *Solution:* Created modular validation functions (`isValidId` and `validateBook`) to strictly validate types and non-empty strings before reaching the database query, and added an Express JSON parsing error middleware (`err.type === 'entity.parse.failed'`) to catch bad JSON bodies and return clear HTTP 400 responses.
+
+4. **Port Binding for Production vs. Local Development:**
+   - *Problem:* Hardcoding `app.listen(3000)` would cause deployment to fail on Render because cloud platforms assign a random dynamic port through environment variables.
+   - *Solution:* Implemented dynamic port assignment: `const PORT = process.env.PORT || 3000;`, enabling automatic port binding in cloud environments while defaulting to `3000` during local development.
