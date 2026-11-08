@@ -2,6 +2,7 @@
 node_modules/
 lab-01/node_modules/
 lab-02/node_modules/
+lab-03/node_modules/
 
 # Environment variables
 .env

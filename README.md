@@ -34,3 +34,18 @@ For complete documentation, screenshots, and setup instructions, see [lab-01/REA
 - **Get Book by ID (`GET /books/1/`):** [https://backend-development-fundamentals-2-byeq.onrender.com/books/1/](https://backend-development-fundamentals-2-byeq.onrender.com/books/1/)
 
 For complete documentation, endpoints, screenshots, and setup instructions, see [lab-02/README.md](lab-02/README.md).
+
+---
+
+## Lab 3: REST API, Query Parameters, Validation, and Debugging
+
+### 🟢 Live Deployment (Render)
+- **Base URL:** YOUR_LAB_03_RENDER_URL_HERE
+
+#### Live Endpoints:
+- **API Status (`GET /`):** `GET /`
+- **List Books with Search, Filter & Pagination (`GET /books/`):** `GET /books/`
+- **Get Book by ID (`GET /books/1/`):** `GET /books/1/`
+
+For complete documentation, endpoints, screenshots, and setup instructions, see [lab-03/README.md](lab-03/README.md).
+
