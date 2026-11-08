@@ -8,9 +8,16 @@
 
 ## Live Link
 
-**Deployment URL:** YOUR_LIVE_URL_HERE
+**Deployment URL:** [https://backend-development-fundamentals-3-wwli.onrender.com/](https://backend-development-fundamentals-3-wwli.onrender.com/)
 
-*(If the project cannot be deployed, replace this line with the reason and rely on the Postman screenshots below.)*
+### Live Endpoints:
+- **API Status (`GET /`):** [https://backend-development-fundamentals-3-wwli.onrender.com/](https://backend-development-fundamentals-3-wwli.onrender.com/)
+- **List All Books (`GET /books/`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/](https://backend-development-fundamentals-3-wwli.onrender.com/books/)
+- **Get Book by ID (`GET /books/1/`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/1/](https://backend-development-fundamentals-3-wwli.onrender.com/books/1/)
+- **Search Books (`GET /books/?search_q=the`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/?search_q=the](https://backend-development-fundamentals-3-wwli.onrender.com/books/?search_q=the)
+- **Sort by Price (`GET /books/?order_by=price&order=DESC`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/?order_by=price&order=DESC](https://backend-development-fundamentals-3-wwli.onrender.com/books/?order_by=price&order=DESC)
+- **Pagination (`GET /books/?limit=3&offset=3`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/?limit=3&offset=3](https://backend-development-fundamentals-3-wwli.onrender.com/books/?limit=3&offset=3)
+- **Price Filter (`GET /books/?min_price=300&max_price=500`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/?min_price=300&max_price=500](https://backend-development-fundamentals-3-wwli.onrender.com/books/?min_price=300&max_price=500)
 
 ## Objective
 
@@ -238,6 +245,34 @@ Bad input (invalid body, invalid query parameter, invalid id) returns **400 Bad 
 
 ## Notes: Problems Faced and Solutions
 
-- Write your own notes here. For example, describe an error you hit while testing in Postman, deploying or fixing the debugging exercise, and how you solved it.
-- Column names cannot be passed as `?` placeholders in SQL, so `order_by` is checked against a fixed list of column names before it is used in the query. All other user input goes through placeholders.
-- If you deploy on a free plan, the file system may reset on restart, so changes made through POST, PUT and DELETE on the live link can disappear. The local `books.db` keeps changes.
+1. **GLIBC Compatibility on Render Deployment:**
+   - *Problem:* Prebuilt SQLite3 binaries downloaded via npm fail on Linux hosts (Render) due to missing `GLIBC_2.38`.
+   - *Solution:* Added a `postinstall.js` script that detects Linux platforms and triggers `npm rebuild sqlite3 --build-from-source` so sqlite3 compiles against the host's native C runtime.
+
+2. **Dynamic SQL Identifiers for Sorting:**
+   - *Problem:* SQL placeholders (`?`) only work for values, not identifiers. Using `ORDER BY ?` fails to sort by column, while raw string concatenation creates SQL injection vulnerabilities.
+   - *Solution:* Checked `order_by` against a strict whitelist of allowed column names (`['id', 'title', 'author', 'price', 'pages']`) and `order` against `ASC`/`DESC` before safely embedding into the SQL query string.
+
+3. **Handling Multi-condition Price Filtering:**
+   - *Problem:* Users can supply `min_price`, `max_price`, both, or neither, requiring dynamic `WHERE` clause generation.
+   - *Solution:* Constructed parameterized query arrays conditionally: using `price BETWEEN ? AND ?` when both exist, or `>=` / `<=` when only one boundary is specified, ensuring type-safe numeric validation beforehand.
+
+4. **Database Auto-Seeding & Cold Starts:**
+   - *Problem:* Deploying to cloud services or fresh clones may have an empty or uninitialized database table.
+   - *Solution:* Implemented an automatic schema check in `app.js` that checks for table existence and automatically seeds from `seed.sql` upon server initialization.
+
+---
+
+## Submission Checklist
+
+- [x] RESTful API endpoints implemented for books resource (`/books/`, `/books/:bookId/`)
+- [x] Search filter implemented using `search_q` and SQL `LIKE ?`
+- [x] Sorting implemented with `order_by` and `order` against a strict column whitelist
+- [x] Pagination implemented with numeric `limit` and `offset`
+- [x] Range filter implemented with `min_price` and `max_price`
+- [x] Input validation for path parameters, query parameters, and request body with 400 Bad Request
+- [x] Proper HTTP status codes: 200 OK, 201 Created, 400 Bad Request, 404 Not Found, 500 Server Error
+- [x] Debugging exercise completed and documented in `debugging/DEBUGGING.md`
+- [x] Postman collection verified and included in `postman/lab-03.postman_collection.json`
+- [x] Render deployment live and operational: [https://backend-development-fundamentals-3-wwli.onrender.com/](https://backend-development-fundamentals-3-wwli.onrender.com/)
+- [x] Verified Postman & SQLite database screenshots embedded in `README.md`

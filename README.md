@@ -40,12 +40,16 @@ For complete documentation, endpoints, screenshots, and setup instructions, see 
 ## Lab 3: REST API, Query Parameters, Validation, and Debugging
 
 ### 🟢 Live Deployment (Render)
-- **Base URL:** YOUR_LAB_03_RENDER_URL_HERE
+- **Base URL:** [https://backend-development-fundamentals-3-wwli.onrender.com/](https://backend-development-fundamentals-3-wwli.onrender.com/)
 
 #### Live Endpoints:
-- **API Status (`GET /`):** `GET /`
-- **List Books with Search, Filter & Pagination (`GET /books/`):** `GET /books/`
-- **Get Book by ID (`GET /books/1/`):** `GET /books/1/`
+- **API Status (`GET /`):** [https://backend-development-fundamentals-3-wwli.onrender.com/](https://backend-development-fundamentals-3-wwli.onrender.com/)
+- **List All Books (`GET /books/`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/](https://backend-development-fundamentals-3-wwli.onrender.com/books/)
+- **Get Book by ID (`GET /books/1/`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/1/](https://backend-development-fundamentals-3-wwli.onrender.com/books/1/)
+- **Search Books (`GET /books/?search_q=the`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/?search_q=the](https://backend-development-fundamentals-3-wwli.onrender.com/books/?search_q=the)
+- **Sort by Price (`GET /books/?order_by=price&order=DESC`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/?order_by=price&order=DESC](https://backend-development-fundamentals-3-wwli.onrender.com/books/?order_by=price&order=DESC)
+- **Pagination (`GET /books/?limit=3&offset=3`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/?limit=3&offset=3](https://backend-development-fundamentals-3-wwli.onrender.com/books/?limit=3&offset=3)
+- **Price Filter (`GET /books/?min_price=300&max_price=500`):** [https://backend-development-fundamentals-3-wwli.onrender.com/books/?min_price=300&max_price=500](https://backend-development-fundamentals-3-wwli.onrender.com/books/?min_price=300&max_price=500)
 
 For complete documentation, endpoints, screenshots, and setup instructions, see [lab-03/README.md](lab-03/README.md).
 
